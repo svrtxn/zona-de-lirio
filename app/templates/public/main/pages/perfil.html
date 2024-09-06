@@ -1,0 +1,12 @@
+{% extends 'public/main/home.html' %}
+{% block title %}Perfil | {{ dataUser.username }}{% endblock %}
+
+{% block body %}
+<div class="row justify-content-md-center mb-5">
+  <h1>PERFIL DE USUARIO</h1>
+  <p>Nombre: {{ dataUser.username }}</p>
+  <p>Email: {{ dataUser.email }}</p>
+  <p>Fecha de creación: {{ dataUser.created_at }}</p>
+  <p>Rol: {{ role }}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% if miData %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-custom">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Portada</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Primera publicación</th>
+                <th scope="col">Última actualización</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in miData %}
+            <tr>
+                <td colspan="7">
+                    <a href="{{ url_for('projects.details', id=project.project_id) }}" class="d-block">
+                        <div class="row">
+                            <div class="col-md-1">
+                                {{ loop.index }}
+                            </div>
+                            <div class="col-md-2">
+                                <img src="{{ url_for('static', filename='assets/portadas/' ~ project.covered) }}"
+                                    alt="{{ project.name }}" class="img-cover">
+                            </div>
+                            <div class="col-md-3">
+                                {{ project.name }}
+                            </div>
+                            <div class="col-md-4">
+                                {{ project.description }}
+                            </div>
+                            <div class="col-md-1">
+                                {{ project.creacion }}
+                            </div>
+                            <div class="col-md-1">
+                                {{ project.actualizacion }}
+                            </div>
+                            <div class="col-md-1">
+                                {% if project.status == 1 %}
+                                En Proceso
+                                {% elif project.status == 2 %}
+                                Finalizado
+                                {% else %}
+                                Desconocido
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="row mb-5">
+    <div class="col-md-12">
+        <h3 class="text-center">No hay proyectos</h3>
+    </div>
+</div>
+{% endif %}

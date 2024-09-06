@@ -1,0 +1,28 @@
+<header class="header">
+    <a href="./" class="logo">
+        Zona de Lirio
+    </a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+        <li><a href="{{ url_for('public.inicio') }}">Inicio</a></li>
+        <li><a href="#">Biblioteca</a></li>
+        <li><a href="#">Afiliados</a></li>
+        <li><a href="#">Nosotros</a></li>
+        {% if user_logged_in %}
+        <li><a href="{{ url_for('public.perfil') }}">Perfil</a></li>
+        {% endif %}
+        <!-- Barra de búsqueda -->
+        <li><input type="text" name="query" class="search-input" placeholder="Buscar..."></li>
+
+        {% if user_logged_in %}
+        <li><a href="{{ url_for('public.logout') }}"><i class="bi bi-box-arrow-right"></i></a></li>
+
+        {% if user_role == 1 or user_role == 2 %}
+        <li><a href="{{ url_for('admin.admin') }}"><i class="bi bi-gear"></i> </a></li>
+        {% endif %}
+        {% else %}
+        <li><a href="{{ url_for('public.login') }}"><i class="bi bi-person-circle"></i></a></li>
+        {% endif %}
+    </ul>
+</header>

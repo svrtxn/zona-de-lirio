@@ -1,0 +1,11 @@
+{% extends 'admin/home.html' %}
+{% include 'admin/pages/alerts.html' %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/private/projects.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1>Agregar capitulos</h1>
+{% endblock %}

@@ -1,0 +1,43 @@
+<form name="formRegisterClient" id="formRegisterClient" action="{{ url_for('public.registerUser') }}" method="POST" class="mt-5" autocomplete="off">
+    <h1 class="mb-5 text-center" id="title">Registrarse</h1>
+
+    <div class="col-mb-6">
+        <div class="input-group mb-3">
+            <i class="bi bi-person-fill input-group-text"></i>
+            <input type="text" name="username" class="form-control custom-input" placeholder="Nombre de usuario" autofocus required>
+        </div>
+    </div>
+    <div class="col-mb-6">
+        <div class="input-group mb-3">
+            <i class="bi bi-envelope-fill input-group-text"></i>
+            <input type="email" name="email" class="form-control custom-input" placeholder="Correo electrónico" required>
+        </div>
+    </div>
+    <div class="col-mb-6">
+        <div class="input-group mb-3">
+            <i class="bi bi-lock-fill input-group-text"></i>
+            <input type="password" name="password" id="passwordRegister" class="form-control custom-input" placeholder="Contraseña" required>
+            <button type="button" class="eye-btn" id="togglePasswordRegister">
+                <i class="bi bi-eye"></i>
+            </button>
+        </div>
+    </div>
+    <div class="col-mb-6">
+        <div class="input-group mb-3">
+            <i class="bi bi-lock-fill input-group-text"></i>
+            <input type="password" name="repeat_password" id="repeatPasswordRegister" class="form-control custom-input" placeholder="Repetir contraseña" required>
+            <button type="button" class="eye-btn" id="toggleRepeatPassword">
+                <i class="bi bi-eye"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2 mt-3 mb-3">
+        <input type="submit" class="btn btn-primary btn-send" id="sendForm" value="REGISTRARSE">
+    </div>
+
+    <div class="mb-12 fin">
+        <span>¿Ya tienes una cuenta?</span>
+        <a href="{{ url_for('public.loginUser') }}" id="link_sign_up" class="volverViewLogin">Iniciar sesión <i class="bi bi-arrow-left"></i></a>
+    </div>
+</form>

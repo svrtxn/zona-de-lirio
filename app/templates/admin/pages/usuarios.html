@@ -1,0 +1,38 @@
+{% extends 'admin/home.html' %}
+{% include 'admin/pages/alerts.html' %}
+{% block title %}Usuarios {% endblock %}
+
+{% block body %}
+<h1>Usuarios</h1>
+{% if (miData) %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <th scope="col">#</th>
+            <th scope="col">Nombre de usuario</th>
+            <th scope="col">Correo electronico</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Fecha de creación</th>
+        </thead>
+        <tbody>
+            {% for users in miData %}
+            <tr id="Registro_{{ project.id }}">
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ users.username }}</tdusers
+                <td>{{ users.mail }}</td>
+                <td>{{ users.role_id }}</td>
+                <td>{{ users.created_at }}</td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="row mb-5">
+    <div class="col-md-12">
+        <h3 class="text-center">No hay usuarios</h3>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

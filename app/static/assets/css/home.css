@@ -1,0 +1,85 @@
+/* Estilo general para el body para centrar contenido */
+body {
+    background-color: #2c3338 !important;
+    font-family: "Karla", sans-serif;
+    color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+form {
+    background-color: #2c3338;
+    padding: 2rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+
+#title {
+    margin-bottom: 5rem;
+}
+
+
+.btn-send {
+    background-color: #64c2fd;
+    border-color: #488cb6;
+}
+
+
+.form-control.custom-input::placeholder {
+    color: #606468;
+}
+
+
+.input-group {
+    background-color: #3b4148;
+    border-radius: 5rem;
+}
+
+.input-group-text {
+    background-color: #3b4148;
+    color: #606468;
+    border: 1px solid #2c3338;
+}
+
+
+.form-control.custom-input {
+    background-color: #3b4148;
+    color: #606468;
+    border: 1px solid #2c3338;
+}
+
+
+.form-control.custom-input:focus {
+    border-color: #606468;
+    box-shadow: 0 0 0 0.2rem rgba(96, 100, 104, 0.25);
+}
+
+
+.fin span {
+    color: #606468;
+}
+
+.fin a {
+    color: #f4f4f4;
+}
+
+
+@media screen and (min-width: 1000px) {
+    #styleLogin {
+        margin: 0 auto;
+        width: 35% !important;
+    }
+}
+
+@media (min-width: 280px) and (max-width: 680px) {
+    #styleLogin {
+        margin: 0 auto;
+        width: 80% !important;
+    }
+}

@@ -1,0 +1,73 @@
+{% extends 'admin/home.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/private/details.css') }}">
+{% endblock %}
+
+{% block body %}
+<a href=""></a>
+<div class="container">
+
+    <div class="cont-1 d-flex">
+        <div class="portada">
+            <img src="{{ url_for('static', filename='assets/portadas/' ~ project.covered) }}" alt="{{ project.name }}">
+        </div>
+
+        <div class="contenido">
+            <div class="name">
+                {{ project.name }}
+            </div>
+            <div class="secondary_name">
+                {{ project.secondary_name }}
+            </div>
+            <div class="description">
+                <p class="titulos">Sipnosis de <span>{{ project.name }}</span></p>
+                {{ project.description }}
+            </div>
+            <div class="categories">
+                <p class="titulos">Categorías</p>
+                <!-- Aquí puedes agregar categorías si las tienes -->
+            </div>
+        </div>
+    </div>
+    <div class="info">
+        <div class="status info-data">
+            <p class="titulos-2">Estado</p>
+            {% if project.status == 1 %}
+            En Proceso
+            <i class="bi bi-clock-fill"></i>
+            {% elif project.status == 2 %}
+            Finalizado
+            <i class="bi bi-check-circle-fill"></i>
+            {% else %}
+            Desconocido
+            <i class="bi bi-x-circle-fill"></i>
+            {% endif %}
+        </div>
+        <div class="info-data">
+            <p class="titulos-2">Autor:</p>
+            <span>{{ project.author }}</span>
+        </div>
+        <div class="info-data">
+            <p class="titulos-2">Publicado por:</p>
+            <span>{{ project.published_by }}</span>
+        </div>
+        <div class="info-data">
+            <p class="titulos-2">Fecha de publicación:</p>
+            <span>{{ project.created_at }}
+        </div>
+        <div class="info-data">
+            <p class="titulos-2">Última actualización:</p>
+            {{ project.updated_at }}  <!-- Asegúrate de usar el nombre correcto del campo -->
+        </div>
+        <div class="info-data">
+            <p class="titulos-2">Tipo:</p>
+            {{ project.type }}
+        </div>
+        <div class="info-data">
+            <p class="titulos-2">Clasificación:</p>
+            {{ project.rating }}
+        </div>
+    </div>
+    <a href="">Subir capítulo</a>
+</div>
+{% endblock %}

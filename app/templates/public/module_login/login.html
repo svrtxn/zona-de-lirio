@@ -1,0 +1,27 @@
+<form action="{{ url_for('public.loginUser') }}" method="POST" autocomplete="off">
+    <h1 class="mb-5 text-center" id="title">Iniciar Sesión</h1>
+    <div class="mb-6">
+        <div class="input-group mb-3">
+            <i class="bi bi-person-fill input-group-text"></i>
+            <input type="username" name="username" id="username" class="form-control custom-input" required placeholder="Nombre de Usuario">
+        </div>
+    </div>
+    <div class="mb-6">
+        <div class="input-group mb-3">
+            <i class="bi bi-lock-fill input-group-text"></i>
+            <input type="password" name="password" id="passwordLogin" class="form-control custom-input" required placeholder="Contraseña">
+            <button type="button" class="eye-btn" id="togglePasswordLogin">
+                <i class="bi bi-eye"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2 mt-3 mb-3">
+        <button type="submit" class="btn btn-primary btn-send">INICIAR</button>
+    </div>
+
+    <div class="mb-12 fin">
+        <span>¿No tienes cuenta?</span>
+        <a href="{{ url_for('public.registrarse') }}" id="link_sign_up" class="createUser">Crear cuenta <i class="bi bi-arrow-right"></i></a>
+    </div>
+</form>

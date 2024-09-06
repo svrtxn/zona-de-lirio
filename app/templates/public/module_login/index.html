@@ -1,0 +1,24 @@
+{% extends 'public/module_login/base_login.html' %}
+{% include 'public/main/pages/alerts.html' %}
+{% block title %}Inicio {% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <a href="{{ url_for('public.inicio') }}"><i class="bi bi-house-door-fill casa"></i> </a>
+    <!--Login-->
+    <div class="col-md-6 cajaLogin" id="styleLogin">
+
+        {% include 'public/module_login/login.html' %}
+    </div>
+
+
+    <!---Register User-->
+    <div class="col-md-6 formRegisterUser" id="styleLogin" style="display:none;">
+
+        {% include 'public/module_login/register.html' %}
+    </div>
+    <!---fin register User-->
+
+</div>
+{% endblock %}

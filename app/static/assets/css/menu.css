@@ -1,0 +1,138 @@
+:root {
+  --dark-color: #2c3338;
+  --medium-color: #3b4148;
+  --light-color: #7b7f84;
+  --white-color: #f0f0f0;
+  --black-color: #333333;
+  --primary-color: #64c2fd;
+  --primary-dark-color: #488cb6;
+}
+
+html,
+body {
+  background-color: var(--dark-color) !important;
+  color: var(--white-color);
+  font-family: 'Karla', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.header {
+  background-color: var(--dark-color);
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 0;
+  color: var(--white-color);
+  display: flex;
+  justify-content: space-between; /* Alinea el logo a la izquierda y el menú a la derecha */
+  align-items: center; /* Centra verticalmente el contenido dentro del header */
+  padding: 0 20px; /* Añade espacio a los lados */
+}
+
+.header .logo {
+  font-size: 2em;
+  padding: 5px 0; /* Ajusta el espaciado según sea necesario */
+  color: var(--white-color);
+}
+
+/* Menú */
+.header .menu {
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos del menú */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header li {
+  margin-left: 20px; /* Espacio entre los elementos del menú */
+}
+
+.header li a {
+  display: block;
+  padding: 20px;
+  color: var(--white-color);
+  text-decoration: none;
+}
+
+.header li a:hover {
+  background-color: var(--medium-color);
+}
+
+.search-input {
+  background-color: #3b4148;
+  color: #606468;
+  border: 5px solid #2c3338;
+  border-radius: 15px; 
+  padding: 10px;
+  margin-left: 10px;
+  padding-right: 50px; /* Asegura que el texto no se superponga con el botón */
+  box-sizing: border-box; /* Incluye el padding en el ancho total del input */
+  position: relative; /* Necesario para posicionar el icono */
+}
+
+.search-btn {
+  background-color: #3b4148;
+  color: #606468;
+  border-radius: 50%;
+  border: 5px solid #2c3338;
+  padding: 10px;
+  width: 50px;
+  height: 50px; /* Asegura que el botón tenga el mismo alto que el input */
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Ajusta este valor según sea necesario */
+  transform: translateY(-50%); /* Centra verticalmente el botón */
+}
+
+i {
+  font-size: 24px;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header .menu {
+    width: 100%;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .header .menu-btn {
+    display: block;
+  }
+
+  .header .menu-icon {
+    display: block;
+  }
+
+  .header .menu-btn:checked~.menu {
+    max-height: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header .menu {
+    clear: none;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .header .menu-btn {
+    display: none;
+  }
+
+  .header .menu-icon {
+    display: none;
+  }
+}

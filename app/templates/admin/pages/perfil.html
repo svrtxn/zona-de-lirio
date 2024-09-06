@@ -1,0 +1,13 @@
+{% extends 'admin/home.html' %}
+{% include 'admin/pages/alerts.html' %}
+{% block title %}Perfil {% endblock %}
+
+{% block body %}
+<h1>Perfil</h1>
+
+<p>Nombre: {{ dataUser.username }}</p>
+<p>Email: {{ dataUser.email }}</p>
+<p>Fecha de creación: {{ dataUser.created_at }}</p>
+<p>Rol: {{ role }}</p>
+
+{% endblock %}
