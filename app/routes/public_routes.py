@@ -4,28 +4,12 @@ from datetime import datetime
 import re
 from functools import wraps
 
+from app.utils.projects_f import stringAleatorio, recibe_file, registrar_proyecto, list_projects, get_db, format_date
+from app.utils.public_f import dataLoginSession, dataUsuario
 
 public_routes = Blueprint('public', __name__, template_folder='templates/public')
 
-def dataLoginSession():
-    return {
-        'user_id': session.get('user_id'),
-        'role_id': session.get('role_id'),
-        'username': session.get('username'),
-        'email': session.get('email'),
-        'password': session.get('password'),
-        'created_at': session.get('created_at')
-    }
 
-def dataUsuario():
-    conn = g.db
-    cursor = conn.cursor(dictionary=True)
-    idUsuario = session['user_id']
-    querySQL = "SELECT * FROM users WHERE user_id = %s"
-    cursor.execute(querySQL, (idUsuario,))
-    datosUsuario = cursor.fetchone()
-    cursor.close()
-    return datosUsuario
 
 @public_routes.errorhandler(404)
 def not_found(error):
@@ -136,3 +120,17 @@ def logout():
     session.clear()
     msgClose = 'Sesión cerrada correctamente.'
     return redirect(url_for('public.login', msjAlert=msgClose, typeAlert=1))
+
+@public_routes.route('/biblioteca')
+def biblioteca():
+    user_logged_in = 'user_id' in session
+    user_role = session.get('role_id')
+    projects = list_projects()  # Obtén la lista de proyectos desde la base de datos
+    
+    return render_template(
+        'public/main/pages/biblioteca.html',
+        user_logged_in=user_logged_in,
+        user_role=user_role,
+        projects=projects,  # Pasa la lista de proyectos a la plantilla
+        dataLoginSession=dataLoginSession()
+    )

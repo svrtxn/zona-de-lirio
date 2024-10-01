@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chapter-info {
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.chapter-info .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-project-container {
+    display: flex;
+    align-items: center;
+}
+
+.chapter-title {
+    margin: 0;
+}
+
+.project-name {
+    margin-left: 15px;
+    font-style: italic;
+    color: var(--light-color);
+    margin-top: 10px;
+}
+
+.chapter-info .top .btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.chapter-info p {
+    margin-top: 10px;
+}
+
+.chapter-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    /* Puedes ajustar este ancho según sea necesario */
+    width: 100%;
+    /* Asegura que el contenedor use el ancho máximo disponible */
+}
+
+.chapter-images .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    /* Centra las imágenes dentro del contenedor de la fila */
+}
+
+.chapter-images .imgs {
+    flex: 0 1 auto;
+    /* Asegura que los elementos no se estiren para llenar el espacio disponible */
+    margin: 0;
+}
+
+.chapter-images .imgs img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-custom {
+    background-color: #64c2fd;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background-color: #488cb6;
+}

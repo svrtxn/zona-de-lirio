@@ -1,0 +1,71 @@
+.form-container {
+    background-color: #2c3338;
+    padding: 2rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    max-width: 95%;
+    width: 100%;
+    max-height: 90vh; 
+    overflow-y: auto; 
+}
+
+/* Ajustes para los inputs */
+.custom-input, .form-select, .form-control-file {
+    width: 100%;
+    padding: 10px;
+    background-color: #3b4148;
+    color: #dbdbdb;
+    border: 1px solid #2c3338;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.form-container.custom-input:focus {
+    border-color: #606468;
+    box-shadow: 0 0 0 0.2rem rgba(96, 100, 104, 0.25);
+}
+
+
+.btn-custom {
+    background-color: #64c2fd;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-custom:hover {
+    background-color: #488cb6;
+}
+
+/* Contenedor para categorías seleccionadas */
+#selectedCategories {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.selected-category {
+    background-color: #3b4148;
+    color: #dbdbdb;
+    border: 1px solid #2c3338;
+    border-radius: 4px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.selected-category .remove-category {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 0 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}

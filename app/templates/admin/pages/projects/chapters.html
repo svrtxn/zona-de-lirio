@@ -1,0 +1,38 @@
+{% extends 'admin/home.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/private/chapters.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+  <!-- Información del capítulo -->
+  <div class="chapter-info">
+    <div class="top">
+      <div class="title-project-container">
+        <h2 class="chapter-title">{{ chapter.title }}</h2>
+        <h5 class="project-name">{{ project.name }}</h5>
+      </div>
+      <a href="{{ url_for('projects.details', id=chapter.project_id) }}" class="btn-custom"><i
+          class="bi bi-arrow-left"></i> Volver</a>
+    </div>
+    <p>Número: {{ chapter.number }}</p>
+  </div>
+
+  <!-- Imágenes del capítulo -->
+  <div class="chapter-images">
+    {% if images %}
+    <div class="row">
+      {% for image in images %}
+      <div class="imgs">
+        <img src="{{ url_for('static', filename=image.image_path) }}" alt="Imagen del capítulo" class="img-fluid">
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No hay imágenes para este capítulo.</p>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'public/main/home.html' %}
+{% block title %}Biblioteca{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/biblioteca.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1>Biblioteca</h1>
+<div class="projects">
+    {% for project in projects %}
+    <div class="cards">
+        <a href="{{ url_for('projects.details', id=project.project_id) }}">
+            <img src="{{ url_for('static', filename='assets/portadas/' ~ project.covered) }}" alt="{{ project.name }}">
+            <p>{{ project.name }}</p>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,11 +1,35 @@
 {% extends 'admin/home.html' %}
 {% include 'admin/pages/alerts.html' %}
 
-
 {% block extra_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/private/projects.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/private/add_chapter.css') }}">
 {% endblock %}
 
 {% block body %}
-<h1>Agregar capitulos</h1>
+<h1>Agregar capítulo</h1>
+<form name="mi_form" class="form-custom" action="{{ url_for('projects.add_chapter', id=project_id) }}" method="POST"
+  autocomplete="off" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="title">Nombre:</label>
+    <input type="text" class="custom-input" name="title" id="title" autocomplete="off" required />
+  </div>
+  <div class="form-group">
+    <label for="number">Número:</label>
+    <input type="text" class="custom-input" name="number" id="number" autocomplete="off" required>
+  </div>
+  <div class="form-group">
+    <label for="archivos">
+      Recuerda solo <strong> (JPG máximo 2 MB). </strong>
+      <br>
+      Recuerda subirlos en orden y <strong>enumerados.</strong>
+    </label>
+    <div id="fileInputs">
+      <input type="file" name="archivos[]" accept="image/*" multiple />
+    </div>
+    <button type="submit" class="btn-custom">
+      <i class="bi bi-upload"></i>
+      AGREGAR CAPÍTULO
+    </button>
+  </div>
+</form>
 {% endblock %}

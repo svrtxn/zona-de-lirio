@@ -1,78 +1,115 @@
-<div id="overlay">
-    <form name="formRegisterProject" id="formRegisterProject" action="{{ url_for('projects.formAddProjects') }}"
-        method="POST" class="form-container" autocomplete="OFF" enctype="multipart/form-data">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h1>Agregar proyecto</h1>
-            <a href="{{ url_for('projects.formAddProjects') }}" id="link_sign_up">
-                <i class="bi bi-x-lg"></i>
-            </a>
-        </div>
+{% extends 'admin/home.html' %}
 
-        <div class="row mb-3">
-            <div class="col-md-6">
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/private/add_project.css') }}">
+{% endblock %}
+
+{% block body %}
+<h1>Agregar proyecto</h1>
+<form name="formRegisterProject" id="formRegisterProject" action="{{ url_for('projects.formAddProjects') }}"
+    method="POST" class="form-container" autocomplete="OFF" enctype="multipart/form-data">
+    <!-- Fila 1: Título, Título secundario, Autor -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <div class="form-group">
                 <label for="name">Título:</label>
-                <input type="text" name="name" class="form-control" placeholder="Título" autofocus required>
+                <input type="text" name="name" class="form-control custom-input" placeholder="Título" autofocus required>
             </div>
-            <div class="col-md-6">
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
                 <label for="secondary_name">Título secundario:</label>
-                <input type="text" name="secondary_name" class="form-control" placeholder="Título secundario" autofocus
-                    required>
+                <input type="text" name="secondary_name" class="form-control custom-input" placeholder="Título secundario" autofocus required>
             </div>
         </div>
-
-        <div class="mb-3">
-            <label for="description">Descripción:</label>
-            <textarea class="form-control" placeholder="Descripción" name="description"></textarea>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="author">Autor:</label>
+                <input type="text" name="author" class="form-control custom-input" placeholder="Autor" autofocus required>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="covered">Portada: <span class="dimensions">(150x200px)</span></label>
-            <input type="file" name="covered" class="form-control-file custom-file" accept="image/*"
-                placeholder="Portada">
-        </div>
+    </div>
 
-        <div class="row mb-3">
-            <div class="col-md-6">
+    <!-- Fila 2: Tipo, Clasificación, Estado -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <div class="form-group">
                 <label for="type">Tipo:</label>
-                <select name="type" id="type" class="form-select">
+                <select name="type" id="type" class="form-select custom-input">
                     <option value="manga">Manga</option>
                     <option value="manhwa">Manhwa</option>
                     <option value="manhua">Manhua</option>
                 </select>
             </div>
-            <div class="col-md-6">
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
                 <label for="rating">Clasificación:</label>
-                <select name="rating" id="rating" class="form-select">
+                <select name="rating" id="rating" class="form-select custom-input">
                     <option value="+18">+18</option>
                     <option value="Para todas las edades">Para todas las edades</option>
                 </select>
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-md-6">
+        <div class="col-md-4">
+            <div class="form-group">
                 <label for="status">Estado:</label>
-                <select name="status" id="status" class="form-select">
+                <select name="status" id="status" class="form-select custom-input">
                     <option value="1">En proceso</option>
                     <option value="2">Finalizado</option>
                     <option value="3">En espera</option>
                 </select>
             </div>
-            <div class="col-md-6">
-                <label for="author">Autor:</label>
-                <input type="text" name="author" class="form-control" placeholder="Autor" autofocus required>
+        </div>
+    </div>
+
+    <!-- Fila 3: Descripción, Portada -->
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="description">Descripción:</label>
+                <textarea class="form-control custom-input" placeholder="Descripción" name="description"></textarea>
             </div>
         </div>
-
-        <div class="mb-3">
-            <label for="categories">Categorías:</label>
-            <select name="categories" id="categories" class="form-select" multiple>
-                {% for category in categories %}
-                <option value="{{ category.category_id }}">{{ category.name }}</option>
-                {% endfor %}
-            </select>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="covered">Portada: <span class="dimensions">(150x200px)</span></label>
+                <input type="file" name="covered" class="form-control-file custom-input" accept="image/*" placeholder="Portada">
+            </div>
         </div>
+    </div>
 
-        <div class="d-grid gap-2 mt-3">
-            <input type="submit" class="btn btn-primary btn-send" id="sendForm" value="CREAR">
+    <!-- Fila 4: Categorías -->
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="categories">Categorías:</label>
+                <select name="categories" id="categories" class="form-select custom-input" multiple>
+                    {% if categories %}
+                        {% for category in categories %}
+                            <option value="{{ category.category_id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    {% else %}
+                        <option>No categories found</option>
+                    {% endif %}
+                </select>
+                <button type="button" id="addCategory" class="btn btn-custom mt-2">Agregar categoría</button>
+            </div>
         </div>
-    </form>
-</div>
+        <div class="col-md-6">
+            <div id="selectedCategories">
+                <!-- Las categorías seleccionadas se agregarán aquí -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Campo oculto para enviar las categorías seleccionadas -->
+    <input type="hidden" name="selected_categories" id="selected_categories">
+
+    <div class="d-grid gap-2 mt-3">
+        <input type="submit" class="btn btn-custom" id="sendForm" value="CREAR">
+    </div>
+</form>
+
+
+{% endblock %}

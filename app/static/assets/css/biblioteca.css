@@ -1,0 +1,35 @@
+/* Container for all project cards */
+.projects {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.cards {
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.5s ease;
+    margin: 20px;
+}
+
+
+.cards img {
+    width: 187.5px;
+    border-radius: 8px;
+    height: 225px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.cards p {
+    font-size: 18px;
+    margin: 10px;
+}
+
+
+.cards:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+
+}

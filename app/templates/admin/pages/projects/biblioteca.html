@@ -10,46 +10,14 @@
 <div class="container">
     <div class="head">
         <h1>Biblioteca</h1>
-    
-       
         <a href="{{ url_for('projects.add_project') }}" id="showAddProject" class="action-button"></i> Agregar</a>
-    
     </div>
     
     <div id="listProjects"  class="form-container">
         {% include 'admin/pages/projects/list_projects.html' %}
     </div>
 
-    <!-- Formulario para añadir proyecto -->
-    <div id="formAddProject" class="form-container" style="display: none;">
-        {% include 'admin/pages/projects/add_project.html' %}
-    </div>
-
-    <!-- Formulario para editar proyecto -->
-    <div id="formEditProject" class="form-container" style="display: none;">
-        {% include 'admin/pages/projects/editar_proyecto.html' %}
-    </div>
-
+    
 </div>
 {% endblock %}
 
-{% block extra_js %}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    // Mostrar el formulario de añadir proyecto
-    $("#showAddProject").click(function(e) {
-        e.preventDefault();
-        $("#formAddProject").fadeIn(1000);
-        $("#formEditProject").hide();
-    });
-
-    // Mostrar el formulario de editar proyecto
-    $("#showEditProject").click(function(e) {
-        e.preventDefault();
-        $("#formEditProject").fadeIn(1000);
-        $("#formAddProject").hide();
-    });
-});
-</script>
-{% endblock %}

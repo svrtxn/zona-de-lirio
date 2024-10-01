@@ -1,6 +1,6 @@
 {% if miData %}
 <div class="table-responsive">
-    <table class="table table-bordered table-hover table-custom">
+    <table class="table table-bordered table-hover table-striped table-dark custom-table">
         <thead class="thead-light">
             <tr>
                 <th scope="col">#</th>
@@ -10,43 +10,60 @@
                 <th scope="col">Primera publicación</th>
                 <th scope="col">Última actualización</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
             {% for project in miData %}
             <tr>
-                <td colspan="7">
+                <td>
                     <a href="{{ url_for('projects.details', id=project.project_id) }}" class="d-block">
-                        <div class="row">
-                            <div class="col-md-1">
-                                {{ loop.index }}
-                            </div>
-                            <div class="col-md-2">
-                                <img src="{{ url_for('static', filename='assets/portadas/' ~ project.covered) }}"
-                                    alt="{{ project.name }}" class="img-cover">
-                            </div>
-                            <div class="col-md-3">
-                                {{ project.name }}
-                            </div>
-                            <div class="col-md-4">
-                                {{ project.description }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ project.creacion }}
-                            </div>
-                            <div class="col-md-1">
-                                {{ project.actualizacion }}
-                            </div>
-                            <div class="col-md-1">
-                                {% if project.status == 1 %}
-                                En Proceso
-                                {% elif project.status == 2 %}
-                                Finalizado
-                                {% else %}
-                                Desconocido
-                                {% endif %}
-                            </div>
-                        </div>
+                        {{ loop.index }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('projects.details', id=project.project_id) }}" class="d-block">
+                        <img src="{{ url_for('static', filename='assets/portadas/' ~ project.covered) }}"
+                            alt="{{ project.name }}" class="img-cover">
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('projects.details', id=project.project_id) }}" class="d-block">
+                        {{ project.name }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('projects.details', id=project.project_id) }}" class="d-block">
+                        {{ project.description }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('projects.details', id=project.project_id) }}" class="d-block">
+                        {{ project.creacion }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('projects.details', id=project.project_id) }}" class="d-block">
+                        {{ project.actualizacion }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('projects.details', id=project.project_id) }}" class="d-block">
+                        {% if project.status == 1 %}
+                        En Proceso
+                        {% elif project.status == 2 %}
+                        Finalizado
+                        {% else %}
+                        Desconocido
+                        {% endif %}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('projects.edit_project', id=project.project_id) }}" class="d-block">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a href="{{ url_for('projects.details', id=project.project_id) }}" class="d-block">
+                        <i class="bi bi-trash3"></i>
                     </a>
                 </td>
             </tr>
